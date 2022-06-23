@@ -1,4 +1,4 @@
-![Parser](https://raw.githubusercontent.com/tomost2019/parser/main/assets/images/automation.png)
+![Parser](https://raw.githubusercontent.com/tomost2019/parser/automation/assets/images/automation.png)
 
 # Parser
 A simple parser written in Python. 
