@@ -1,25 +1,25 @@
+import sys
+
 # SETTINGS.
 # You can change some settings for the script below. See the comments for each of them. 
 
 # Logfile mode.
 logfile_mode = "r"
-# Text for instructions.
-instructions = '\nWhich data would you like to see? Type below for the correct action.\n\n1) Type "statistics" or "stats" to show statistics for errors and notice.\n2) Type "errors" to show details about errors.\n3) Type "notice" to show details about notice.\n'
 
 # SCRIPT BEGINS.
 # Do not change anything below here. Change the settings in the variables above instead. 
 
-# Input for the logfile path. 
-print("\nType filepath:\n")
-logfile_path = input()
+# Input for the logfile path and action from the command line. 
+logfile_path = sys.argv[1]
+user_input = sys.argv[2]
 
 # With statement open the logfile path with the chosen mode. No need to close the file within with statement. 
 # Convert the data into proper data structure.
 # Converts from string > list > dictionaries within the list. Loop through the list to extract the dicationaries. 
 # Add custom error handlers with the try statement. 
-# Takes the user input for the program. 
+
 try:
-    with open(logfile_path, logfile_mode) as file:
+    with open(logfile_path, logfile_mode, encoding='utf-8') as file:
         all_data = []
         dict_keys = ["date", "type", "message"]
         for all in file:
@@ -27,8 +27,6 @@ try:
             dict_values = [rm.replace("[", "") for rm in dict_values]
             dict_structure = {key:value for key, value in zip(dict_keys, dict_values)}
             all_data.append(dict_structure)
-        print(instructions)
-        user_input = input().lower()
 except FileNotFoundError:
     print("\nThe file does not exist.\n")
     exit()
@@ -55,11 +53,11 @@ def count_notice():
             count = count + 1
     return count
 
-# Executes each input chosen by the user in the program. 
-if user_input == "statistics" or user_input == "stats":
-    print("\nerrors:", count_errors())
+# Executes each input depending on the action from the command line. 
+if user_input == "statistics":
+    print("\nerror:", count_errors())
     print("\nnotice:", count_notice(), "\n")
-elif user_input == "errors":
+elif user_input == "error":
     for dict_data in all_data:
         if dict_data['type'] == "error":
             print("\n", dict_data['date'], dict_data['message'])

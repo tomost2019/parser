@@ -1,4 +1,16 @@
-![Parser](https://raw.githubusercontent.com/tomost2019/parser/main/assets/images/parser.png)
+![Parser](https://raw.githubusercontent.com/tomost2019/parser/main/assets/images/automation.png)
 
 # Parser
-A simple parser written in Python. This is the interactive version of the parser. 
+A simple parser written in Python. 
+
+This parser takes command from the terminal which makes it excellent for automation.
+
+# How to use the script
+
+The sequence to execute the script:
+
+`python3 loganalyzer.py filepath action`
+
+###### Example:
+
+`python3 loganalyzer.py test.log error`
