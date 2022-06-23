@@ -14,3 +14,5 @@ The sequence to execute the script:
 ###### Example:
 
 `python3 loganalyzer.py test.log error`
+
+[Interactive version of this parser](https://github.com/tomost2019/parser/tree/main)
